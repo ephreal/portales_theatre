@@ -1,0 +1,29 @@
+{% extends "theatre/partials/base.html" %}
+
+{% block main %}
+
+<section class="client_reservations">
+    <header class="client_reservations-header">
+        <h1>Reservations Made</h1>
+    </header>
+    <div id="purchased" class="client_purchased_reservations">
+        <!-- <section class="client_purchase-reservation_play">
+            <p class="client_purchase-reservation_play_name">play name</p>
+        </section>
+        <aside class="client_purchase-play_details">
+            <header class="client_purchase-play_details_header">
+                <p>Date: </p>
+                <p>Time: </p>
+            </header>
+            <section class="client_purchase-seating">
+                <section class="client_purchase-seat">
+                    <p>row: x seat: y</p>
+                </section>
+            </section>
+        </aside>
+    </div> -->
+</section>
+
+<script type="module" src="{{url_for('static', filename='js/client_report.js')}}"></script>
+
+{% endblock %}

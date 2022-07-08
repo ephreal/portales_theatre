@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/shared.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/admin.css')}}">
+    <title>Portales Theatre Administrative Area</title>
+</head>
+<body>
+    {% include 'admin/partials/navmenu.html' %}
+    <main class="content">
+        <header>
+            {% include 'admin/partials/header.html' %}
+        </header>
+        <section class="maincontent">
+            {% block main %}
+
+            {% endblock main %}
+        </section>
+        <footer>
+            {% include 'admin/partials/footer.html' %}
+        </footer>
+    </main>
+</body>
+</html>

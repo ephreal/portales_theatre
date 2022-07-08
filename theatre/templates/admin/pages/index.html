@@ -1,0 +1,56 @@
+{% extends 'admin/partials/base.html' %}
+
+{% block main %}
+
+<h1 class="index_text">Site Administration</h1>
+<section class="admin_options">
+    <a href="{{url_for('admin.users')}}" class="admin_box-clickable_area">
+        <section class="admin_box">
+            <header class="admin_box-header">
+                <img class="admin_box-header_image" src="{{url_for('static', filename='img/admin/icons/user.png')}}" alt="User Icon">
+            </header>
+            <aside class="admin_box-description">
+                <p>Users</p>
+            </aside>
+        </section>
+    </a>
+    <a href="{{url_for('admin.plays')}}" class="admin_box-clickable_area">
+        <section class="admin_box">
+            <header class="admin_box-header">
+                <img src="{{url_for('static', filename='img/admin/icons/play.png')}}" alt="" class="admin_box-header_image">
+            </header>
+            <aside class="admin_box-description">
+                <p>Schedule</p>
+            </aside>
+        </section>
+    </a>
+    <a href="{{url_for('admin.reporting')}}" class="admin_box-clickable_area">
+        <section class="admin_box">
+            <header class="admin_box-header"><img src="{{url_for('static', filename='img/admin/icons/report.png')}}" alt="Reporting" class="admin_box-header_image"></header>
+            <aside class="admin_box-description">
+                <p>Reports</p>
+            </aside>
+        </section>
+    </a>
+    <a href="{{url_for('theatre.index')}}" class="admin_box-clickable_area">
+        <section class="admin_box">
+            <header class="admin_box-header"><img src="{{url_for('static', filename='img/admin/icons/back.png')}}" alt="Back" class="admin_box-header_image"></header>
+            <aside class="admin_box-description">
+                <p>Back</p>
+            </aside>
+        </section>
+    </a>
+    <a href="{{url_for('auth.logout')}}" class="admin_box-clickable_area">
+        <section class="admin_box">
+            <header class="admin_box-header"><img src="{{url_for('static', filename='img/admin/icons/logout.png')}}" alt="Logout" class="admin_box-header_image"></header>
+            <aside class="admin_box-description">
+                <p>Logout</p>
+            </aside>
+        </section>
+    </a>
+    <!-- a.admin_box-clickable_area>section.admin_box>header.admin_box-header>img.admin_box-header_image^aside.admin_box-description>p -->
+</section>
+
+
+
+{% endblock %}

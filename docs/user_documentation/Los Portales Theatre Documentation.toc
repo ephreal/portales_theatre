@@ -1,0 +1,17 @@
+\contentsline {part}{I\hspace {1em}Admin Guide}{5}{part.1}%
+\contentsline {chapter}{\numberline {1}Software Setup}{7}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Assumptions}{7}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Site Requirements}{7}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Package Installation}{8}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Configuring the Database}{8}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Apache Configuration}{9}{section.1.5}%
+\contentsline {part}{II\hspace {1em}User Guide}{11}{part.2}%
+\contentsline {chapter}{\numberline {2}Administrative Site Usage}{13}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Creating the Initial Admin User}{13}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Administrative Area}{13}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Managing Users}{14}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Managing Plays}{15}{section.2.4}%
+\contentsline {chapter}{\numberline {3}Customer Site Usage}{19}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Creating a User}{19}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Reserving Seats}{20}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Modifing Account Information}{23}{section.3.3}%

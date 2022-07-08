@@ -1,0 +1,17 @@
+<nav class="primary_navmenu">
+    <ul class="primary_navmenu-links">
+        <li class="primary_navmenu-item"><a href="{{url_for('theatre.index')}}" class="primary_navmenu-link">Home</a></li>
+        <li class="primary_navmenu-item"><a href="{{url_for('theatre.plays_page_one')}}" class="primary_navmenu-link">Plays</a></li>
+        <li class="primary_navmenu-item"><a href="{{url_for('theatre.about')}}" class="primary_navmenu-link">About</a></li>
+        {% if current_user.is_authenticated %}
+            {% if current_user.is_admin %}
+                <li class="primary_navmenu-item"><a href="{{url_for('admin.index')}}" class="primary_navmenu-link">Admin Area</a></li>
+            {% endif %}
+        <li class="primary_navmenu-item"><a href="{{url_for('client.user_info')}}" class="primary_navmenu-link">User</a></li>
+        <li class="primary_navmenu-item"><a href="{{url_for('auth.logout')}}" class="primary_navmenu-link">Logout</a></li>
+        {% else %}
+        <li class="primary_navmenu-item"><a href="{{url_for('auth.login')}}" class="primary_navmenu-link">Login</a></li>
+        {% endif %}
+        <!-- li.primary_navmenu-item>a.primary_navmenu-link -->
+    </ul>
+</nav>

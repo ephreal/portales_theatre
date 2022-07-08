@@ -1,0 +1,31 @@
+{% extends 'theatre/partials/base.html' %}
+
+{% block main %}
+<script src="{{url_for('static', filename='js/checkout.js')}}" type="module"></script>
+<section class="selected_display">
+    <header class="selected_display-header">
+        <h2>Selected Seating</h2>
+    </header>
+    {% include 'theatre/partials/loading.html' %}
+    <section id="reservations" class="selected_display-reservations">
+        <div class="selection">
+            <header class="selection_title">
+                <p class="selection_header_text">Play Name</p>
+            </header>
+            <section class="selection_details">
+                <p class="selection_header_text">Detail</p>
+            </section>
+        </div>
+    </section>
+</section>
+
+{% include 'theatre/partials/credit_card_entry.html' %}
+
+<section class="checkout_confirm">
+    <p>Total: $<span id="total_price">0</span></p>
+    <button id="checkout_button" class="checkout_button">Purchase Seats</button>
+</section>
+
+<script type="module" src="{{url_for('static', filename='js/checkout.js')}}"></script>
+
+{% endblock %}

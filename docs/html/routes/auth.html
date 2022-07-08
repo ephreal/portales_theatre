@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Authorization Routes &#8212; Portales Theatre Website 0.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Route Helper Functions" href="route_functions.html" />
+    <link rel="prev" title="Administration Routes" href="admin.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="authorization-routes">
+<h1>Authorization Routes<a class="headerlink" href="#authorization-routes" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<span class="target" id="module-theatre.routes.auth"></span><dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.auth.display_login">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.auth.</span></span><span class="sig-name descname"><span class="pre">display_login</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.auth.display_login" title="Permalink to this definition">¶</a></dt>
+<dd><p>URL: /login/</p>
+<p>Method: GET</p>
+<p>Displays the login page to the user.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.auth.display_signup">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.auth.</span></span><span class="sig-name descname"><span class="pre">display_signup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.auth.display_signup" title="Permalink to this definition">¶</a></dt>
+<dd><p>URL: /signup/</p>
+<p>Method: GET</p>
+<p>Returns the signup page to the user.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.auth.load_user">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.auth.</span></span><span class="sig-name descname"><span class="pre">load_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.auth.load_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a user for use with the login manager.</p>
+<p>This is handled automatically by login_manager, so you should never need
+to call this manually.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.auth.login">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.auth.</span></span><span class="sig-name descname"><span class="pre">login</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.auth.login" title="Permalink to this definition">¶</a></dt>
+<dd><p>URL: /login/</p>
+<p>Method: POST</p>
+<p>Processes the submitted Login Form.</p>
+<p>If the form is valid, it will then check the email/password combo.
+If the email/password combo is valid, it will then log the user in.</p>
+<p>If the form is invalid, or if the email/password combo are incorrect,
+the user will be returned to the login screen.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.auth.logout">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.auth.</span></span><span class="sig-name descname"><span class="pre">logout</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.auth.logout" title="Permalink to this definition">¶</a></dt>
+<dd><p>URL: /logout/</p>
+<p>Method: GET</p>
+<p>Logs the current user out.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.auth.signup">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.auth.</span></span><span class="sig-name descname"><span class="pre">signup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.auth.signup" title="Permalink to this definition">¶</a></dt>
+<dd><p>URL: /signup/</p>
+<p>Method: POST</p>
+<p>Processes the signup form.</p>
+<p>If the form is valid, it will then attempt to create a new user.</p>
+<p>If the user data is invalid, or the email address already exists in the
+user database, the user will be returned to the signup page and asked to
+correct the errors.</p>
+<p>If the user data is valid and the email address does not alraedy exist,
+the user will be created in the database and the user will be redirected
+to the login page.</p>
+<p>Request Post Form fields
+Username: String
+Password: String
+Confirmation: String
+Email: String</p>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Portales Theatre Website</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../api/specification.html">API Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/admin_api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/admin_api_endpoints.html">Admin API HTTP Routes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/client_api.html">Client API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/client_api_endpoints.html">Client API HTTP Routes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/shared.html">Shared API Functionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="admin.html">Administration Routes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Authorization Routes</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="route_functions.html">Route Helper Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models.html">Models</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="admin.html" title="previous chapter">Administration Routes</a></li>
+      <li>Next: <a href="route_functions.html" title="next chapter">Route Helper Functions</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Ephreal.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/routes/auth.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

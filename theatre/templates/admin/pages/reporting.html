@@ -1,0 +1,26 @@
+{% extends 'admin/partials/base.html' %}
+
+{% block main %}
+
+<section class="report_pane">
+    <section class="report_options">
+        <section class="date_section">
+            <label for="start_date">Start Date:</label>
+            <input id="start_date" type="date">
+        </section>
+        <section class="date_section">
+            <label for="end_date">End Date:</label>
+            <input id="end_date" type="date">
+        </section>
+
+    </section>
+    <section class="report" id="report">
+
+    </section>
+
+    <button id="run_report">Run Report</button>
+</section>
+
+<script type="module" src="{{url_for('static', filename='js/reporting.js')}}"></script>
+
+{% endblock %}

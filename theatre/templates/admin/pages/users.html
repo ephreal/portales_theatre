@@ -1,0 +1,69 @@
+{% extends 'admin/partials/base.html' %}
+
+{% block main %}
+
+<button class="action_button"><a class="action_button-link" href="{{url_for('admin.new_user')}}">Add User</a></button>
+
+<section class="user_list">
+    <header class="user_list-header">
+        <h1>Administrators</h1>
+    </header>
+    {% for admin in admins %}
+        <section class="user_display">
+            <header class="user_display-header">
+                <a class="user_display-header_link" href="{{url_for('admin.user', userid=admin.id)}}">{{admin.full_name}} ({{admin.email}})</a>
+            </header>
+            <section class="user_display-info">
+                <section class="user_display-infobox">
+                    <h3>Admin Info</h3>
+                    <p>first_name: {{admin.first_name}}</p>
+                    <p>last_name: {{admin.last_name}}</p>
+                    <p>email: {{admin.email}}</p>
+                </section>
+                <aside class="user_display-infobox">
+                    <h3> Info</h3>
+                    <p>Address: {{admin.address}}</p>
+                    <p>Apartment: {{admin.apartment}}</p>
+                    <p>City: {{admin.city}}</p>
+                    <p>State: {{admin.state}}</p>
+                    <p>Zip Code: {{admin.zip_code}}</p>
+                </aside>
+            </section>
+            <button class="action_button"><a class="action_button-link" href="{{url_for('admin.user', userid=admin.id)}}">Edit User</a></button>
+            <button class="action_button"><a class="action_button-link" href="{{url_for('admin.delete_user', userid=admin.id)}}">Delete User</a></button>
+        </section>
+    {% endfor %}
+</section>
+
+<section class="user_list">
+    <header class="user_list-header">
+        <h1>Users</h1>
+    </header>
+    {% for user in users %}
+        <section class="user_display">
+            <header class="user_display-header">
+                <a class="user_display-header_link" href="{{url_for('admin.user', userid=user.id)}}">{{user.full_name}} ({{user.email}})</a>
+            </header>
+            <section class="user_display-info">
+                <section class="user_display-infobox">
+                    <h3>User Info</h3>
+                    <p>first_name: {{user.first_name}}</p>
+                    <p>last_name: {{user.last_name}}</p>
+                    <p>email: {{user.email}}</p>
+                </section>
+                <aside class="user_display-infobox">
+                    <h3>Contact Info</h3>
+                    <p>Address: {{user.address}}</p>
+                    <p>Apartment: {{user.apartment}}</p>
+                    <p>City: {{user.city}}</p>
+                    <p>State: {{user.state}}</p>
+                    <p>Zip Code: {{user.zip_code}}</p>
+                </aside>
+            </section>
+            <button class="action_button"><a class="action_button-link" href="{{url_for('admin.user', userid=user.id)}}">Edit User</a></button>
+            <button class="action_button"><a class="action_button-link" href="{{url_for('admin.delete_user', userid=user.id)}}">Delete User</a></button>
+        </section>
+    {% endfor %}
+</section>
+
+{% endblock %}

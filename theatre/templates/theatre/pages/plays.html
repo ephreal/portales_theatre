@@ -1,0 +1,26 @@
+{% extends "theatre/partials/base.html" %}
+
+{% block main %}
+
+<h1>Currently Available Plays</h1>
+
+<section class="plays_display">
+    {% for play in plays %}
+        <section class="play_display">
+            <a class="play_display-clickable_header" href="{{url_for('theatre.play', play_number=play.id)}}">
+            <header class="play_display-header">
+                <img class="play_header-image" src="{{url_for('static', filename='img/tests/Phantom of the Opera mask.jpg')}}">
+                <aside class="play_header-play_info">
+                    <p class="play_display-link" href="/play/{{play.id}}">{{play.name}}</p>
+                    <p>{{play.date}}</p>
+                </aside>
+            </header>
+            </a>
+            <section class="play_display-description">
+                <p>{{play.description}}</p>
+            </section>
+        </section>
+    {% endfor %}
+</section>
+
+{% endblock %}

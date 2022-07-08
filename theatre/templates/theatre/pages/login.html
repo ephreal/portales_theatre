@@ -1,0 +1,22 @@
+{% extends 'theatre/partials/base.html' %}
+
+{% block main %}
+
+<form class="wtform" action="/login/" method="post">
+    <p class="wtform_text">Please Login</p>
+    {{form.csrf_token}}
+    <div class="wtform_field">
+        {{form.email.label}}
+        {{form.email}}
+    </div>
+    <div class="wtform_field">
+        {{form.password.label}}
+        {{form.password}}
+    </div>
+    <div class="wtform_field wtform_submit">
+        <input class="wtsubmit" type="submit" value="Login">
+    </div>
+    <p class="wtform_text">Not registered? <a href="/signup/">Signup!</a></p>
+</form>
+
+{% endblock %}

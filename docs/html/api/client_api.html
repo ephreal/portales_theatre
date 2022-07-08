@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Client API &#8212; Portales Theatre Website 0.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Client API HTTP Routes" href="client_api_endpoints.html" />
+    <link rel="prev" title="Admin API HTTP Routes" href="admin_api_endpoints.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="client-api">
+<span id="client-api-label"></span><h1>Client API<a class="headerlink" href="#client-api" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<span class="target" id="module-theatre.routes.api.client"></span><dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.api.client.check_reservation">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.api.client.</span></span><span class="sig-name descname"><span class="pre">check_reservation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seat_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.api.client.check_reservation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks to see if a reservation exists.</p>
+<div class="line-block">
+<div class="line">Parameters:</div>
+<div class="line-block">
+<div class="line">seat_id: int</div>
+<div class="line">date_id: int</div>
+<div class="line">time_id: int</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">Returns:</div>
+<div class="line-block">
+<div class="line">Error or Reservation</div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.api.client.create_reservation">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.api.client.</span></span><span class="sig-name descname"><span class="pre">create_reservation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reservation_json</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.api.client.create_reservation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reserves a seat.</p>
+<div class="line-block">
+<div class="line">Parameters:</div>
+<div class="line-block">
+<div class="line">reservation_json: JSON {seat_id, date_id, time_id}</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">Returns</div>
+<div class="line-block">
+<div class="line">Error or Reservation</div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.api.client.delete_reservation">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.api.client.</span></span><span class="sig-name descname"><span class="pre">delete_reservation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reservation_json</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.api.client.delete_reservation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes a reservation that matches the date, time, and seat for the
+current user. If the current user has not made that reservation, the
+reservation will not be removed.</p>
+<div class="line-block">
+<div class="line">Parameters:</div>
+<div class="line-block">
+<div class="line">reservation_json: JSON {seat_id, date_id, time_id}</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">Returns:</div>
+<div class="line-block">
+<div class="line">dict (either success or error)</div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.api.client.get_reservations">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.api.client.</span></span><span class="sig-name descname"><span class="pre">get_reservations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">play_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.api.client.get_reservations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the reservations for a play at a specific date and time.</p>
+<p>Notably, this does not accept all items as single JSON input.</p>
+<div class="line-block">
+<div class="line">Parameters:</div>
+<div class="line-block">
+<div class="line">play_id: int</div>
+<div class="line">date_id: int</div>
+<div class="line">time_id: int</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">Returns:</div>
+<div class="line-block">
+<div class="line">dict OR [Reservation]</div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.api.client.get_reservations_by_date">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.api.client.</span></span><span class="sig-name descname"><span class="pre">get_reservations_by_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.api.client.get_reservations_by_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the reservations for the current user on the specified date.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>date: String (YYYY-MM-DD)</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict or [Reservations]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.api.client.register">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.api.client.</span></span><span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.api.client.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers a user in the database.</p>
+<div class="line-block">
+<div class="line">Parameters:</div>
+<div class="line-block">
+<div class="line">user_data: JSON {</div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">email, password, confirmation, first_name, last_name</div>
+</div>
+<div class="line">}</div>
+</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">Returns:</div>
+<div class="line-block">
+<div class="line">User or False</div>
+</div>
+</div>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Portales Theatre Website</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="specification.html">API Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="admin_api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="admin_api_endpoints.html">Admin API HTTP Routes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Client API</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="client_api_endpoints.html">Client API HTTP Routes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shared.html">Shared API Functionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routes/admin.html">Administration Routes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routes/auth.html">Authorization Routes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routes/route_functions.html">Route Helper Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models.html">Models</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="admin_api_endpoints.html" title="previous chapter">Admin API HTTP Routes</a></li>
+      <li>Next: <a href="client_api_endpoints.html" title="next chapter">Client API HTTP Routes</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Ephreal.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/client_api.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

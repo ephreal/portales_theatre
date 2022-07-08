@@ -1,0 +1,24 @@
+% Some date configuration for YYYY-MM-DD (ISO 8601 format)
+% Credit for this to wipet from an answer on stack overflow
+% https://tex.stackexchange.com/questions/152392/date-format-yyyy-mm-dd#answer-237251
+% I've modified the definition mydate to mytoday make more sense for me.
+\def\mytoday{\leavevmode\hbox{\the\year-\twodigits\month-\twodigits\day}}
+\def\twodigits#1{\ifnum#1<10 0\fi\the#1}
+
+\title{End-User and Administration Guide}
+\author{Ephreal}
+\date{Updated: \mytoday}
+\maketitle
+\clearpage
+\tableofcontents
+
+\clearpage
+
+\section*{Introduction}
+Welcome to the documentation for Los Portales Theatre's Website. This documentation is split into two parts: Administration and Usage.
+
+Administration covers site requirements, setup, maintenance, and migration.
+
+Usage covers how to use the software, both from an administrative user's perspective and from a non-admin's perspective.
+
+This documentation can be distributed either in electronic format or printed out and sent to any location that requires it.

@@ -1,0 +1,13 @@
+{% extends "theatre/partials/base.html" %}
+
+{% block main %}
+
+<p>There was a dog, walking down the street.</p>
+<img src="{{url_for('static', filename='img/tests/static_test1.jpg')}}" alt="dog walking">
+
+<p>He saw a sign on a park bench that said wet paint.</p>
+
+<img src="{{url_for('static', filename='img/tests/static test 2.jpg')}}" alt="">
+
+<p>...so he did.</p>
+{% endblock %}

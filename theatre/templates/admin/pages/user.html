@@ -1,0 +1,41 @@
+{% extends 'admin/partials/base.html' %}
+
+{% block main %}
+
+<form action="{{url_for('admin.edit_user', userid=userid)}}" method="post" class="wtform">
+    {{form.csrf_token}}
+    <div class="wtform_field">
+        {{form.first_name.label}}
+        {{form.first_name}}
+    </div>
+    <div class="wtform_field">
+        {{form.last_name.label}}
+        {{form.last_name}}
+    </div>
+    <div class="wtform_field">
+        {{form.address.label}}
+        {{form.address}}
+    </div>
+    <div class="wtform_field">
+        {{form.apartment.label}}
+        {{form.apartment}}
+    </div>
+    <div class="wtform_field">
+        {{form.state.label}}
+        {{form.state}}
+    </div>
+    <div class="wtform_field">
+        {{form.city.label}}
+        {{form.city}}
+    </div>
+    <div class="wtform_field">
+        {{form.zip_code.label}}
+        {{form.zip_code}}
+    </div>
+    <div class="wtform_field wtsubmit">
+        {{form.submit}}
+    </div>
+    <p class="wtform_text"><a href="{{url_for('admin.password', userid=userid)}}">Change Password</a></p>
+</form>
+
+{% endblock %}

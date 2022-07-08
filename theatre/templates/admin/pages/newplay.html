@@ -1,0 +1,45 @@
+{% extends 'admin/partials/base.html' %}
+
+{% block main %}
+
+<form class="wtform" action="{{url_for('admin.create_play')}}" method="post">
+
+    {{form.csrf_token}}
+
+    <div class="wtform_field">
+        {{form.name.label}}
+        {{form.name}}
+    </div>
+
+    <div class="wtform_field">
+        {{form.dates.label}}
+        {{form.dates}}
+    </div>
+
+    <div class="wtform_field">
+        {{form.times.label}}
+        {{form.times}}
+    </div>
+
+    <div class="wtform_field">
+        {{form.default_price.label}}
+        {{form.default_price}}
+    </div>
+
+    <div class="wtform_field">
+        {{form.description.label}}
+        {{form.description}}
+    </div>
+
+    <div class="wtform_field">
+        {{form.active.label}}
+        {{form.active}}
+    </div>
+
+    <div class="wtform_submit">
+        {{form.submit}}
+    </div>
+
+</form>
+
+{% endblock %}

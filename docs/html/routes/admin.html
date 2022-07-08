@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Administration Routes &#8212; Portales Theatre Website 0.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Authorization Routes" href="auth.html" />
+    <link rel="prev" title="Shared API Functionality" href="../api/shared.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="administration-routes">
+<h1>Administration Routes<a class="headerlink" href="#administration-routes" title="Permalink to this headline">¶</a></h1>
+<p>The administration routes are used by the administrator user to manage the site. In order to access any of these URLs, the user must be logged in AND and administrative user on the site (ie: user.is_admin == 1).</p>
+<div class="toctree-wrapper compound">
+</div>
+<span class="target" id="module-theatre.routes.admin"></span><dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.admin.check_admin">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.admin.</span></span><span class="sig-name descname"><span class="pre">check_admin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.admin.check_admin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks to see if the current user is an administrator.</p>
+<p>If the user is not an administrator, it redirects them to the site’s index
+page.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.admin.create_play">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.admin.</span></span><span class="sig-name descname"><span class="pre">create_play</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.admin.create_play" title="Permalink to this definition">¶</a></dt>
+<dd><p>URL: /admin/play/</p>
+<p>Method: POST</p>
+<p>Creates the Play from the form provided.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.admin.create_user">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.admin.</span></span><span class="sig-name descname"><span class="pre">create_user</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.admin.create_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>URL: /admin/user/</p>
+<p>Method: POST</p>
+<p>Creates a new user from the form data passed in.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.admin.delete_user">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.admin.</span></span><span class="sig-name descname"><span class="pre">delete_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">userid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.admin.delete_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>URL: /admin/user/delete/userid</p>
+<p>Method: GET</p>
+<p>Deletes the user associated with the id specified.</p>
+<p>Parameters:</p>
+<blockquote>
+<div><p>userid: int</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.admin.edit_password">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.admin.</span></span><span class="sig-name descname"><span class="pre">edit_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">userid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.admin.edit_password" title="Permalink to this definition">¶</a></dt>
+<dd><p>URL: /admin/user/&lt;userid&gt;/password</p>
+<p>Method: POST</p>
+<p>Updates the password for the user with user.id == userid</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.admin.edit_play">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.admin.</span></span><span class="sig-name descname"><span class="pre">edit_play</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">play_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.admin.edit_play" title="Permalink to this definition">¶</a></dt>
+<dd><p>URL: /admin/play/&lt;play_id&gt;</p>
+<p>Method: POST</p>
+<p>Edits the play to be consistent with the play form data.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>play_id: int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.admin.edit_user">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.admin.</span></span><span class="sig-name descname"><span class="pre">edit_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">userid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.admin.edit_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>URL: /admin/user/&lt;userid&gt;</p>
+<p>Method: Get</p>
+<p>Verifies the submitted data. If verified, converts the submitted data to
+JSON and submits the updated user information to the admin API.</p>
+<p>Returns the user to the main user screen if successful.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.admin.index">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.admin.</span></span><span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.admin.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>URL: /admin/</p>
+<p>Method: GET</p>
+<p>Returns the index page for the administrative area.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.admin.new_play">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.admin.</span></span><span class="sig-name descname"><span class="pre">new_play</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.admin.new_play" title="Permalink to this definition">¶</a></dt>
+<dd><p>URL: /admin/play/</p>
+<p>Method: GET</p>
+<p>Displays the “Create new play” form to the user.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.admin.new_user">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.admin.</span></span><span class="sig-name descname"><span class="pre">new_user</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.admin.new_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>URL: /admin/user/</p>
+<p>Method: GET</p>
+<p>Displays a new user form so a new user can be created.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.admin.password">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.admin.</span></span><span class="sig-name descname"><span class="pre">password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">userid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.admin.password" title="Permalink to this definition">¶</a></dt>
+<dd><p>URL: /admin/user/&lt;userid&gt;/password/</p>
+<p>Method: GET</p>
+<p>Displays the edit password form for the user with user.id == userid</p>
+<p>Parameters:</p>
+<blockquote>
+<div><p>userid: int</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.admin.play">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.admin.</span></span><span class="sig-name descname"><span class="pre">play</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">play_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.admin.play" title="Permalink to this definition">¶</a></dt>
+<dd><p>URL: /admin/play/&lt;play_id&gt;</p>
+<p>Method: GET</p>
+<p>Displays the play identified by play_id</p>
+<p>Parameters:</p>
+<blockquote>
+<div><p>play_id: int</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.admin.plays">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.admin.</span></span><span class="sig-name descname"><span class="pre">plays</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.admin.plays" title="Permalink to this definition">¶</a></dt>
+<dd><p>URL: /admin/plays/</p>
+<p>Method: GET</p>
+<p>Displays the plays for the admin user to select for further modification.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.admin.test">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.admin.</span></span><span class="sig-name descname"><span class="pre">test</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.admin.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>A simple test route.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.admin.user">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.admin.</span></span><span class="sig-name descname"><span class="pre">user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">userid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.admin.user" title="Permalink to this definition">¶</a></dt>
+<dd><p>URL: /admin/user/&lt;userid&gt;</p>
+<p>Method: GET</p>
+<p>Displays the user identified by the userid passed in the URL. The user can
+be modified from this page.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.admin.users">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.admin.</span></span><span class="sig-name descname"><span class="pre">users</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.admin.users" title="Permalink to this definition">¶</a></dt>
+<dd><p>URL: /admin/users/</p>
+<p>method: GET</p>
+<p>Returns a page showing the current users for the system. Non-admin users
+are shown clearly and separately from administrative users.</p>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Portales Theatre Website</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../api/specification.html">API Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/admin_api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/admin_api_endpoints.html">Admin API HTTP Routes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/client_api.html">Client API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/client_api_endpoints.html">Client API HTTP Routes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/shared.html">Shared API Functionality</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Administration Routes</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="auth.html">Authorization Routes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="route_functions.html">Route Helper Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models.html">Models</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../api/shared.html" title="previous chapter">Shared API Functionality</a></li>
+      <li>Next: <a href="auth.html" title="next chapter">Authorization Routes</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Ephreal.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/routes/admin.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

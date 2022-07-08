@@ -1,0 +1,47 @@
+{% extends 'admin/partials/base.html' %}
+
+{% block main %}
+
+<button class="action_button"><a class="action_button-link" href="{{url_for('admin.new_play')}}">Add Play</a></button>
+<section class="plays_display">
+
+    <header class="plays_display-header">
+        <h1>Plays</h1>
+    </header>
+
+    {% for play in plays %}
+    <a class="play_display-clickable" href="{{url_for('admin.edit_play', play_id=play.id)}}">
+        <section class="play_display {%if not play.active %} play_display-inactive {% endif %}">
+            <header class="play_display-header">
+                <h3 class="play_display-header_text">{{play.name}}
+                    {% if not play.active %}
+                    (Inactive)
+                    {% endif %}
+                </h3>
+            </header>
+            <section class="play_display-info">
+                <section class="play_display-description">
+                    <p>{{play.description | truncate(600)}}</p>
+                </section>
+                <aside class="play_display-datetimes">
+                    <section class="play_display-dates">
+                        <h4>Dates</h4>
+                        {% for date in play.dates %}
+                            <p>{{date.date}}</p>
+                        {% endfor %}
+                    </section>
+                    <section class="play_display-times">
+                        <h4>Times</h4>
+                        {% for time in play.times %}
+                            <p>{{time.time}}</p>
+                        {% endfor %}
+                    </section>
+                </aside>
+            </section>
+    </a>
+    </section>
+    {% endfor %}
+
+</section>
+
+{% endblock %}

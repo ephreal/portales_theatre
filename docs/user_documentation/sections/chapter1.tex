@@ -1,0 +1,122 @@
+\part{Admin Guide} \label{administrative_guide}
+\chapter{Software Setup} \label{software_setup}
+This section of the guide is aimed at system administrators, Linux admins, or anyone who will be setting up and maintaining the software. Throughout this section of the guide, it is assumed that the reader is familiar with common IT concepts such as DNS, command lines, troubleshooting config files, and Linux. This is because setting up the software is a multi-step process that requires you to run administrative commands on a Linux OS. All the required commands for setup are contained within this documentation, but other issues that may arise during the installation, running, or maintenance of the OS. These issues are outside of the scope of this document, which is concerned only with the required configuration needed to run the website.
+
+\section{Assumptions}
+
+This chapter makes the following assumptions that your IT department can assist you with.
+
+\begin{enumerate}
+    \item A domain name has been purchased or a subdomain name is available
+    \item A server with access to the internet is available
+    \item DNS A or AAAA records point to the correct IP address for this server
+    \item The server is running a version of Ubuntu $\geq$ 20.04
+    \item The server is fully up to date
+    \item The server is using Systemd to manage it's services
+\end{enumerate}
+
+\section{Site Requirements} \label{site_requirements}
+
+Running the website requires the following packages to be installed
+
+\begin{enumerate}
+    \item MariaDB (Relational Database)
+    \item Python $\geq$ 3.8
+    \item Apache2 (Webserver)
+\end{enumerate}
+
+The website relies on HTTPS to protect secret information, such as user passwords, transmitted to the site. If the organization already has an HTTPS certificate ready for use, it can be configured in \hyperref[webserver_configuration]{\textcolor{blue}{\underline{Webserver Configuration}}}. Otherwise, we will use Letsencrypt to provide a free, automatically renewing, HTTPS certificate. If you find their service worthwhile, plese donate some money to them so they can keep providing this service for free.
+
+The site will require the following ports to be allowed, both inbound and outbound, through your firewall.
+
+\begin{enumerate}
+    \item 80 (http traffic)
+    \item 443 (https traffic)
+\end{enumerate}
+
+\section{Package Installation} \label{package_installation}
+
+You must install the required packages prior to configuring the software. Run the following commands to install the required packages. If you were lucky enough to receive a digital copy of this guide, you can simply copy and paste the commands into the terminal.
+
+\begin{verbatim}
+sudo apt install mariadb-server python3 python3-venv -y
+sudo apt install apache2 libapache2-mod-wsgi -y
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+\end{verbatim}
+
+\section{Configuring the Database} \label{configure_database}
+
+Before using the database, it's recommended to remove the default test databases and generally secure the installation. To do this, run the following commands after \hyperref[package_installation]{\textcolor{blue}{\underline{Package Installation}}}.
+
+\begin{verbatim}
+sudo systemctl start mysql
+sudo mysql_secure_installation
+\end{verbatim}
+
+You will be asked a series of questions. The default options are perfect for most questions. We would recommend you do \textit{not} configure a root password for the database unless required to do so.
+
+Now that the database has been secured, the correct database must be created and a user must be created to work in the database. We assume that the database is named portales\_theatre, that the default user is named portales\_theatre, and that the defaul password for this user is 123. Obviously, the password should be changed to something more secure.
+
+\begin{verbatim}
+sudo su
+mysql -u root
+create database portales_theatre;
+grant all privileges on portales_theatre.*
+    to 'portales_theatre'@'localhost'
+    identified by "123";
+exit;
+\end{verbatim}
+
+The initial database configuration is now complete.
+
+\section{Apache Configuration} \label{webserver_configuration}
+
+Now that the database has been configured, it's time to configure the web server. Some settings will change slightly depending on how your environment is setup. For example, the ServerName option will vary depending on what domain you are serving.
+
+All configuration files for Apache are stored in the following folder.
+\begin{verbatim}
+/etc/apache2
+\end{verbatim}
+
+Using a text editor or SCP client of your choice, copy the following text to
+
+\begin{verbatim}
+/etc/apache2/sites-available/portales-theatre.conf
+\end{verbatim}
+
+\begin{verbatim}
+<VirtualHost *:80>
+    ServerAdmin admin@portales_theatre.com
+    ServerName portales_theatre.com
+    ServerAlias portales_theatre.com
+    DocumentRoot /var/www/portales_theatre
+    <Directory /var/www/portales_theatre>
+        Require all granted
+    </Directory>
+    CustomLog /var/log/apache2/portales_theatre.access combined
+    WSGIDaemonProcess shadowrun.needs.management python-home=/var/www/portales_theatre/env
+    WSGIScriptAlias / /var/www/portales_theatre/run.py
+</VirtualHost>
+\end{verbatim}
+
+Once the file has been copied onto the server, run the following commands.
+
+\begin{verbatim}
+sudo a2ensite portales-theatre
+sudo a2enmod wsgi ssl
+cd /var/www/portales_theatre
+git clone https://github.com/user/portales_theatre
+python3 -m venv env
+source env/bin/activate
+pip install -r requirements.txt
+sudo systemctl reload apache2
+\end{verbatim}
+
+Assuming you are using letsencrypt for free HTTPS, run the following command to have https setup for you.
+
+\begin{verbatim}
+sudo certbot --apache
+\end{verbatim}
+
+The webserver should now be up and serving content.

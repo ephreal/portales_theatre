@@ -1,0 +1,133 @@
+{% extends 'admin/partials/base.html' %}
+
+{% block main %}
+<section class="play_modification">
+    <section class="play_modification-content">
+        <section id="play_seating" class="play_seating">
+            {% if play.dates and play.times %}
+                {% for seat in play.seats%}
+                    {% if seat.id in reservations %}
+                        <div seat="{{seat.id}}" date="{{play.dates[0].id}}" time="{{play.times[0].id}}" price="{{seat.price}}" class="seat seat-reserved seat_row-{{seat.row}} seat_column-{{seat.column}}"></div>
+                    {% else %}
+                        <div seat="{{seat.id}}" date="{{play.dates[0].id}}" time="{{play.times[0].id}}" price="{{seat.price}}" class="seat seat-available seat_row-{{seat.row}} seat_column-{{seat.column}}"></div>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+            <h1>No dates or times associated with this play</h1>
+            {% endif %}
+        </section>
+        <aside id="play_selection_display" class="selected_display">
+            <header class="selected_display-header">
+                <h3>Selected Seat Editor</h3>
+            </header>
+            <section class="selected_display-contents">
+                <section class="selected_display-info">
+                    <p>Reserved: <span id="reserved_amount">0</span></p>
+                    <p>Selected: <span id="selected_amount">0</span></p>
+                    <p>Total selected price: <span id="total_price">0</span></p>
+                </section>
+                <div class="selected_display-datetime_selection">
+                    <div class="selected_display-datetime_selection">
+                        <label for="date-select">Select a date</label>
+                        <select name="date" id="date-select">
+                            <option value="">{{play.dates[0].date}}</option>
+                            {% for date in play.dates[1:] %}
+                                <option value="{{date.date}}">{{date.date}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="selected_display-datetime_selection">
+                        <label for="times-select">Select a time</label>
+                        <select name="times" id="times-select">
+                            <option value="">{{play.times[0].time}}</option>
+                            {% for times in play.times[1:] %}
+                                <option value="{{times.times}}">{{time.time}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <section class="selected_display-modification">
+                    <div class="selected_display-modification_left">
+                        <p>Pricing:</p>
+                    </div>
+                    <div class="selected_display-modification_right">
+                        <input id="seat-price" type="text">
+                    </div>
+                </section>
+                <button id="update_price">Update Pricing</button>
+            </section>
+        </aside>
+    </section>
+    <form id="play_details" class="wtform fullsize hidden" action="{{url_for('admin.edit_play', play_id=play_id)}}" method="post">
+
+        <h3>Modify Play Information</h3>
+
+        {{form.csrf_token}}
+
+        <div class="wtform_field">
+            {{form.name.label}}
+            {{form.name}}
+        </div>
+
+        <div class="wtform_field-model_field_list">
+            {{form.dates.label}}
+            {{form.dates}}
+            <button onclick="add_date()">Add Dates</button>
+        </div>
+
+        <div class="wtform_field">
+            {{form.times.label}}
+            {{form.times}}
+        </div>
+
+        <div class="wtform_field">
+            {{form.default_price.label}}
+            {{form.default_price}}
+        </div>
+
+        <div class="wtform_field">
+            {{form.description.label}}
+        </div>
+
+        <div class="wtform_field">
+            {{form.description(class="wtform_description")}}
+        </div>
+        <div class="wtform_field">
+            {{form.active.label}}
+            {{form.active}}
+        </div>
+        <div class="wtform_submit">
+            {{form.submit(value="Edit Play")}}
+        </div>
+    </form>
+    <aside class="play_modification-navmenu">
+        <ul class="play_modification-navmenu_list">
+            <li onclick="toggle_display('play_seating')" class="play_modification-navmenu_element">Seating</li>
+            <li onclick="toggle_display('play_details')" class="play_modification-navmenu_element">Details</li>
+        </ul>
+    </aside>
+</section>
+
+<script type="module" src="{{url_for('static', filename='js/admin_play_modification.js')}}"></script>
+
+<script>
+    function toggle_display(element) {
+        var play_display = document.getElementById("play_details");
+        var play_seating = document.getElementById("play_seating");
+        var play_selection = document.getElementById("play_selection_display");
+
+        if (element === "play_details") {
+            play_seating.classList.add("hidden");
+            play_selection.style.display = "none";
+            play_display.classList.remove("hidden");
+        }
+
+        else if (element === "play_seating") {
+            play_seating.classList.remove("hidden");
+            play_selection.style.display = "";
+            play_display.classList.add("hidden");
+        }
+    }
+</script>
+
+{% endblock %}

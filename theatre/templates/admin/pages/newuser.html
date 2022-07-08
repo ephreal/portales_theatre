@@ -1,0 +1,58 @@
+{% extends 'admin/partials/base.html' %}
+
+{% block main %}
+
+<form class="wtform" action="{{url_for("admin.new_user")}}" method="POST">
+    {{form.csrf_token}}
+
+    <div class="wtform_field">
+        {{form.email.label}}
+        {{form.email(placeholder="john.doe@example.com")}}
+    </div>
+
+    <div class="wtform_field">
+        {{form.first_name.label}}
+        {{form.first_name(placeholder="John")}}
+    </div>
+    <div class="wtform_field">
+        {{form.last_name.label}}
+        {{form.last_name(placeholder="Doe")}}
+    </div>
+    <div class="wtform_field">
+        {{form.address.label}}
+        {{form.address(placeholder="1812 Overture Lane")}}
+    </div>
+    <div class="wtform_field">
+        {{form.apartment.label}}
+        {{form.apartment(placeholder="A")}}
+    </div>
+    <div class="wtform_field">
+        {{form.city.label}}
+        {{form.city(placeholder="Seattle")}}
+    </div>
+    <div class="wtform_field">
+        {{form.state.label}}
+        {{form.state(placeholder=("WA"))}}
+    </div>
+    <div class="wtform_field">
+        {{form.zip_code.label}}
+        {{form.zip_code(placeholder="54321")}}
+    </div>
+    <div class="wtform_field">
+        {{form.password.label}}
+        {{form.password}}
+    </div>
+    <div class="wtform_field">
+        {{form.confirmation.label}}
+        {{form.confirmation}}
+    </div>
+    <div class="wtform_field">
+        {{form.is_admin.label}}
+        {{form.is_admin}}
+    </div>
+    <div class="wtform_submit">
+        {{form.submit(value="Create User")}}
+    </div>
+</form>
+
+{% endblock %}

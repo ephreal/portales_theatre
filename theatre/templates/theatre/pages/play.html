@@ -1,0 +1,26 @@
+{% extends "theatre/partials/base.html" %}
+
+{% block main %}
+
+<aside class="stage">
+    <h1>{{play.name}}</h1>
+    <h1>STAGE</h1>
+    <div style="display:none;" id="play_id" play="{{play.id}}"></div>
+</aside>
+<section class="play_seating">
+    {% if play.dates and play.times %}
+        {% for seat in play.seats%}
+            {% if seat.id in reservations %}
+                <div seat="{{seat.id}}" date="{{play.dates[0].id}}" time="{{play.times[0].id}}" class="seat seat-reserved seat_row-{{seat.row}} seat_column-{{seat.column}}"></div>
+            {% else %}
+                <div seat="{{seat.id}}" date="{{play.dates[0].id}}" time="{{play.times[0].id}}" class="seat seat-available seat_row-{{seat.row}} seat_column-{{seat.column}}"></div>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+    <h1>No dates or times associated with this play</h1>
+    {% endif %}
+</section>
+<script type="module" src="{{url_for('static', filename='js/client_seat_selector.js')}}"></script>
+
+
+{% endblock %}

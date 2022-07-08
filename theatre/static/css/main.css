@@ -1,0 +1,307 @@
+html {
+    background-color: var(--main-offset-color);
+}
+
+body {
+    color: var(--main-text-color);
+    flex-direction: column;
+}
+
+/* CSS modifications. */
+a {
+    color: var(--secondary-accent-color);
+}
+
+a:visited {
+    color: var(--main-accent-color);
+}
+
+/* Header modifications*/
+.primary_header {
+    background-color: var(--secondary-accent-color);
+    color: var(--main-text-color);
+    display: flex;
+    flex-direction: flex;
+    justify-content: space-between;
+    padding: 2px;
+}
+
+/* Content element */
+.maincontent {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    background-color: var(--main-background-color);
+    flex: 1;
+    align-items: center;
+}
+
+/* Navmenu that is found in the header*/
+.primary_navmenu {
+    width: 100%;
+}
+
+/* This will need to be tweaked a little later. For now, it does well enough
+ * in creating a navbar that is spaced out horizontally across the page
+ */
+.primary_navmenu-links {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.primary_navmenu-link {
+    color: white;
+    display: block;
+    text-decoration: none;
+    padding: .25em .5em;
+    font-size: 1.25em;
+}
+
+.primary_navmenu-item {
+    margin: 0 1em;
+    padding: 0;
+}
+
+.primary_navmenu-link:visited {
+    color: white;
+}
+
+.primary_navmenu-link:hover {
+    background-color: var(--main-accent-color);
+}
+
+.primary_footer {
+    margin-top: auto;
+    background-color: var(--secondary-accent-color);
+    color: var(--main-background-color);
+    padding: .5em;
+}
+
+/* Items that appear on the about page */
+.about_list {
+    margin: 1em;
+    padding: .5em;
+    list-style: none;
+}
+
+.stage {
+    height: 120px;
+    width: 100%;
+    background-color: black;
+    color: var(--main-background-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.play_display {
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border-radius: 10px;
+    background-color: var(--main-offset-color);
+    text-decoration: none;
+    box-shadow: 3px 3px 2px 1px var(--secondary-box-shadow);
+}
+
+.play_display-header{
+    display: flex;
+    height: 140px;
+    width: 500px;
+    padding: 10px;
+    flex-direction: row;
+    align-items: center;
+    color: var(--main-text-color);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid black;
+}
+
+.play_display-header:hover {
+    background-color: var(--secondary-box-shadow);
+}
+
+.play_display-clickable_header {
+    text-decoration: none;
+    color: var(--main-text-color);
+}
+
+.play_display-clickable_header:hover {
+    cursor: pointer;
+}
+
+.play_header-image {
+    border-radius: 50%;
+    padding-right: 20px;
+    height: 100px;
+    width: 100px;
+    display: block;
+    padding: 10px;
+}
+
+.play_header-play_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.play_display-description {
+    padding: 10px;
+    width: 500px;
+}
+
+.play_display-link {
+    font-size: 1.5em;
+    color: var(--main-accent-color);
+}
+
+.shopping_cart {
+    position: absolute;
+    top: 10%;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background-color: var(--main-background-color);
+    box-shadow: 5px 4px 2px 1px var(--secondary-box-shadow);
+}
+
+.shopping_cart-collapsed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    text-decoration: none;
+}
+
+.shopping_cart-collapsed:hover {
+    background-color: var(--main-offset-color);
+    cursor: pointer;
+}
+
+.shopping_cart-image {
+    width: 80%;
+}
+
+.shopping_cart-counter {
+    background-color: var(--flash-error-background);
+    border-radius: 100%;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 10px;
+    right: 2px;
+    display: flex;
+    justify-content: center;
+    color: var(--main-background-color);
+}
+
+.shopping_cart-counter_text {
+    position: absolute;
+    top: 2px;
+}
+
+.selected_display {
+    width: 80%;
+}
+
+.selected_display-header {
+    text-align: center;
+}
+
+.selected_display-reservations {
+
+}
+
+.selection {
+    margin: 1em auto;
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    border-radius: 10px;
+    box-shadow: 3px 3px 2px 1px var(--main-box-shadow);
+    background-color: var(--secondary-background-color);
+    padding: 0;
+}
+
+.selection_title {
+    padding: .5em;
+    font-weight: bold;
+    font-size: 1.25em;
+}
+
+.selection_details {
+    padding: .5em;
+    color: var(--main-background-color);
+}
+
+.selection_header_text {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--main-text-color);
+}
+
+.selection_removal {
+    background-color: var(--flash-error-background);
+    display: block;
+    height: 100px;
+    width: 60px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    transition: background-color .2s ease-out,
+                color .25s ease-out;
+}
+
+.selection_removal_text {
+    position: relative;
+    top: 40%;
+    left: 35%;
+    font-size: 1.5em;
+}
+
+.selection_removal:hover {
+    cursor: pointer;
+    background-color: var(--secondary-offset-color);
+    color: white;
+}
+
+.client_reservations {
+    width: 80%;
+    margin-top: 10px;
+}
+
+.client_reservations-header {
+    text-align: center;
+}
+
+.client_purchase-reservation_play {
+    color: var(--main-background-color);
+    background-color: var(--main-accent-color);
+    box-shadow: 3px 3px 2px 1px var(--secondary-box-shadow);
+    border: 10px outset var(--main-accent-color);
+    margin: 1em 0;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.client_purchase-reservation_play_name {
+    font-weight: bold;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.client_purchase-play_details {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

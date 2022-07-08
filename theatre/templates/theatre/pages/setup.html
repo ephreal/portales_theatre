@@ -1,0 +1,54 @@
+{% extends 'theatre/partials/base.html' %}
+
+{% block main %}
+<h2 class="setup_header">Admin Setup</h2>
+<form class="wtform" action="/setup/" method="post">
+    {{ form.csrf_token }}
+    <div class="wtform_field" name="first_name">
+        {{ form.first_name.label }}
+        {{ form.first_name }}
+    </div>
+    <div class="wtform_field" name="last_name">
+        {{ form.last_name.label }}
+        {{ form.last_name }}
+    </div>
+    <div class="wtform_field">
+        {{form.email.label}}
+        {{form.email}}
+    </div>
+    <div class="wtform_field">
+        {{form.address.label}}
+        {{form.address}}
+    </div>
+    <div class="wtform_field">
+        {{form.apartment.label}}
+        {{form.apartment}}
+    </div>
+    <div class="wtform_field">
+        {{form.city.label}}
+        {{form.city}}
+    </div>
+    <div class="wtform_field">
+        {{form.state.label}}
+        {{form.state}}
+    </div>
+    <div class="wtform_field">
+        {{form.zip_code.label}}
+        {{form.zip_code}}
+    </div>
+    <div class="wtform_field">
+        <p class="wtform_text">Your password must be at least 8 characters long.</p>
+    </div>
+    <div class="wtform_field">
+        {{form.password.label}}
+        {{form.password}}
+    </div>
+    <div class="wtform_field">
+        {{form.confirmation.label}}
+        {{form.confirmation}}
+    </div>
+    <div class="weform_field">
+        {{form.submit(value="Create Admin")}}
+    </div>
+</form>
+{% endblock main %}

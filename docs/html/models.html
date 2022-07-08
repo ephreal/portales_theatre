@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Models &#8212; Portales Theatre Website 0.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Forms" href="forms.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="models">
+<h1>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<span class="target" id="module-theatre.models"></span><dl class="py class">
+<dt class="sig sig-object py" id="theatre.models.Date">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">theatre.models.</span></span><span class="sig-name descname"><span class="pre">Date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.models.Date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stores the dates that the play is time on.</p>
+<div class="line-block">
+<div class="line">id:           The ID of the date</div>
+<div class="line">date:         The date of the play</div>
+<div class="line">play_id:      An integer representing the Play this date belongs to</div>
+</div>
+<div class="line-block">
+<div class="line">Backref Mappings</div>
+<div class="line-block">
+<div class="line">reservations: The reservations made on this date</div>
+<div class="line">play:         The play this date is associated with</div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="theatre.models.Play">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">theatre.models.</span></span><span class="sig-name descname"><span class="pre">Play</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.models.Play" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">id:            The id of the play</div>
+<div class="line">dates:         The dates the play will show</div>
+<div class="line">times:         The times the play will show on the dates</div>
+<div class="line">default_price: The default price for the seats in this play</div>
+<div class="line">name:          The name of the play</div>
+<div class="line">seats:         The seats associated with this play</div>
+<div class="line">active:        Whether or not the play is active (can have seats</div>
+<div class="line-block">
+<div class="line">reserved)</div>
+</div>
+<div class="line">description:   Description of what the play will be about.</div>
+<div class="line">reservations:  seats that have been reserved for a particular date and</div>
+<div class="line-block">
+<div class="line">time</div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="theatre.models.Reservation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">theatre.models.</span></span><span class="sig-name descname"><span class="pre">Reservation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.models.Reservation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows us to easily access the times and dates that a seat for a play has
+been reserved.</p>
+<div class="line-block">
+<div class="line">id:       The id of the Reservation</div>
+<div class="line">date_id:  The id of the Date for the play</div>
+<div class="line">time_id:  The id for the Time of the time</div>
+<div class="line">seat_id:  The Seat id this reservation is for</div>
+<div class="line">play_id:  The Play id this reservation is for</div>
+<div class="line">user_id:  The id of the user who make the reservation</div>
+<div class="line">price:    The price that the reservation was made for</div>
+<div class="line">reserved: The date the reservation was made</div>
+</div>
+<div class="line-block">
+<div class="line">Backref Mappings</div>
+<div class="line-block">
+<div class="line">play: The play this reservation is for</div>
+<div class="line">seat: The seat that was reserved</div>
+<div class="line">date: The date the reservation was made for</div>
+<div class="line">time: The time the reservation was made for</div>
+<div class="line">user: The user who made the reservation</div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="theatre.models.Seat">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">theatre.models.</span></span><span class="sig-name descname"><span class="pre">Seat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.models.Seat" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">id:        The id of the seat</div>
+<div class="line">price:     The cost of the seat.</div>
+<div class="line">play_id:   The play that is associated with this seat.</div>
+<div class="line">row:       The row that the seat is in. 0 is the closest to the stage.</div>
+<div class="line">column:    The column that the seat is in. 0 is the furthest left.</div>
+</div>
+<div class="line-block">
+<div class="line">Backref Mappings</div>
+<div class="line-block">
+<div class="line">reservations: The that have been made for this seat</div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="theatre.models.Time">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">theatre.models.</span></span><span class="sig-name descname"><span class="pre">Time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.models.Time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stores the times that the play is time on</p>
+<div class="line-block">
+<div class="line">id:      The id of the time</div>
+<div class="line">time:    The time the play is shown</div>
+<div class="line">play_id: An integer representing a play</div>
+</div>
+<div class="line-block">
+<div class="line">Backref Mappings</div>
+<div class="line-block">
+<div class="line">reservations: The reservations made at this time</div>
+<div class="line">play:         The play this time is associated with.</div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="theatre.models.User">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">theatre.models.</span></span><span class="sig-name descname"><span class="pre">User</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.models.User" title="Permalink to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">id:            The primary key for the user</div>
+<div class="line">authenticated: Whether or not the user has logged in.</div>
+<div class="line">password:      A password hashed with werkzeug.generate_password_hash</div>
+<div class="line">email:         A string containing the user’s email address</div>
+<div class="line">first_name:     A string containing the user’s first name</div>
+<div class="line">last_name:     A string containing the user’s last name</div>
+<div class="line">is_admin:      A boolean determining whether or not the user is an admin</div>
+<div class="line">address:       User Address</div>
+<div class="line">apartment:     The apartment number or letter for the user’s address</div>
+<div class="line">zip_code:      The zip code for the customer’s address</div>
+<div class="line">state:         The state that the user lives in.</div>
+<div class="line">city:          The city that the user lives in</div>
+<div class="line">reservations:  Any reservation the user has made for a play</div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="theatre.models.User.check_password">
+<span class="sig-name descname"><span class="pre">check_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.models.User.check_password" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks to see if the password provided matches the current password
+for the user.</p>
+<p>Parameters:</p>
+<blockquote>
+<div><p>password: unhashed, cleartext string</p>
+</div></blockquote>
+<p>Returns:</p>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="theatre.models.User.hash_password">
+<span class="sig-name descname"><span class="pre">hash_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.models.User.hash_password" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hashes the password passed in and returns it to the caller.</p>
+<div class="line-block">
+<div class="line">Parameters:</div>
+<div class="line-block">
+<div class="line">password: unhashed, cleartext string</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">Returns:</div>
+<div class="line-block">
+<div class="line">password: Hashed password</div>
+</div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Portales Theatre Website</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="api/specification.html">API Specification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/admin_api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/admin_api_endpoints.html">Admin API HTTP Routes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/client_api.html">Client API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/client_api_endpoints.html">Client API HTTP Routes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/shared.html">Shared API Functionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/admin.html">Administration Routes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/auth.html">Authorization Routes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes/route_functions.html">Route Helper Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forms.html">Forms</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Models</a><ul class="simple">
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="forms.html" title="previous chapter">Forms</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Ephreal.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/models.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

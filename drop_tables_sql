@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS `portales_theatre`.`reservation`;
+DROP TABLE IF EXISTS `portales_theatre`.`time`;
+DROP TABLE IF EXISTS `portales_theatre`.`date`;
+DROP TABLE IF EXISTS `portales_theatre`.`alembic_version`;
+DROP TABLE IF EXISTS `portales_theatre`.`seat`;
+DROP TABLE IF EXISTS `portales_theatre`.`play`;
+DROP TABLE IF EXISTS `portales_theatre`.`users`;

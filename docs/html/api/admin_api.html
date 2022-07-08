@@ -1,0 +1,422 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Admin API &#8212; Portales Theatre Website 0.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Admin API HTTP Routes" href="admin_api_endpoints.html" />
+    <link rel="prev" title="API Specification" href="specification.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="admin-api">
+<span id="admin-api-label"></span><h1>Admin API<a class="headerlink" href="#admin-api" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<span class="target" id="module-theatre.routes.api.admin"></span><dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.api.admin.create_date">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.api.admin.</span></span><span class="sig-name descname"><span class="pre">create_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date_json</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.api.admin.create_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a date in the database.</p>
+<div class="line-block">
+<div class="line">Parameters:</div>
+<div class="line-block">
+<div class="line">date_json: {date, play_id}</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">Returns:</div>
+<div class="line-block">
+<div class="line">Error or Date</div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.api.admin.create_play">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.api.admin.</span></span><span class="sig-name descname"><span class="pre">create_play</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">play_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.api.admin.create_play" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a play with the info passed in.</p>
+<p>The date must be passed in as a formatted string: %Y-%m-%d</p>
+<p>The time must be passed in as a formatted string: %H:%M</p>
+<p>Returns an error or the Play depending on whether or not the play creation
+was successful.</p>
+<p>If no seat information was passed in, this will autogenerate an 8x12 grid
+of seats to go with the play.</p>
+<div class="line-block">
+<div class="line">Parameters:</div>
+<div class="line-block">
+<div class="line">play_data: JSON: {date, seats: {…}, description, name}</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">Returns:</div>
+<div class="line-block">
+<div class="line">Play, Dict</div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.api.admin.create_seat">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.api.admin.</span></span><span class="sig-name descname"><span class="pre">create_seat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seat_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.api.admin.create_seat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a seat with the info passed in.</p>
+<p>Returns a dict or the Seat depending on whether or not the seat creation
+was successful.</p>
+<div class="line-block">
+<div class="line">Parameters:</div>
+<div class="line-block">
+<div class="line">seat_data: JSON {play_id, price, row, column}</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">Returns:</div>
+<div class="line-block">
+<div class="line">Seat, None</div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.api.admin.create_time">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.api.admin.</span></span><span class="sig-name descname"><span class="pre">create_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_json</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.api.admin.create_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a time in the database.</p>
+<div class="line-block">
+<div class="line">Parameters:</div>
+<div class="line-block">
+<div class="line">time_json: {time, play_id}</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">Returns:</div>
+<div class="line-block">
+<div class="line">Error or Date</div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.api.admin.create_user">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.api.admin.</span></span><span class="sig-name descname"><span class="pre">create_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_json</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.api.admin.create_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new user from the JSON passed in.</p>
+<p>Required fields are email, password, confirmation, first_name, last_name</p>
+<div class="line-block">
+<div class="line">Parameters:</div>
+<div class="line-block">
+<div class="line">user_json: JSON {email, password, confirmation, first_name, ….}</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">Returns:</div>
+<div class="line-block">
+<div class="line">dict OR User</div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.api.admin.delete_play">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.api.admin.</span></span><span class="sig-name descname"><span class="pre">delete_play</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">play_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.api.admin.delete_play" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a play and all associated seats.</p>
+<div class="line-block">
+<div class="line">Parameters:</div>
+<div class="line-block">
+<div class="line">play_id: int</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">Returns:</div>
+<div class="line-block">
+<div class="line">None or True</div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.api.admin.delete_seat">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.api.admin.</span></span><span class="sig-name descname"><span class="pre">delete_seat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seat_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.api.admin.delete_seat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a seat and all associated seats.</p>
+<div class="line-block">
+<div class="line">Parameters:</div>
+<div class="line-block">
+<div class="line">seat_id: int</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">Returns:</div>
+<div class="line-block">
+<div class="line">None or True</div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.api.admin.delete_user">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.api.admin.</span></span><span class="sig-name descname"><span class="pre">delete_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_json</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.api.admin.delete_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the user specified by id in the user json.</p>
+<div class="line-block">
+<div class="line">Parameters:</div>
+<div class="line-block">
+<div class="line">user_json: JSON {id}</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">Returns:</div>
+<div class="line-block">
+<div class="line">dict OR True</div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.api.admin.edit_password">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.api.admin.</span></span><span class="sig-name descname"><span class="pre">edit_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_json</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.api.admin.edit_password" title="Permalink to this definition">¶</a></dt>
+<dd><p>Edits the password of the specified user.</p>
+<div class="line-block">
+<div class="line">Parameters:</div>
+<div class="line-block">
+<div class="line">user_json: JSON {userid, password, confirmation}</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">Returns:</div>
+<div class="line-block">
+<div class="line">User or Error</div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.api.admin.edit_user">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.api.admin.</span></span><span class="sig-name descname"><span class="pre">edit_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_json</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.api.admin.edit_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Edits the user specified by the JSON passed in.</p>
+<p>If any errors arise, the user will not be edited and an error will be
+returned.</p>
+<div class="line-block">
+<div class="line">Parameters:</div>
+<div class="line-block">
+<div class="line">user_json: {userid, first_name, last_name, address, apartment….}</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">Returns:</div>
+<div class="line-block">
+<div class="line">dict OR User</div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.api.admin.get_admin_users">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.api.admin.</span></span><span class="sig-name descname"><span class="pre">get_admin_users</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">page</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">per_page</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.api.admin.get_admin_users" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the specified amount of administrative users and returns them to the
+caller.</p>
+<div class="line-block">
+<div class="line">Parameters:</div>
+<div class="line-block">
+<div class="line">page: Which page to get</div>
+<div class="line">per_page: How many users to place per page</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">Returns:</div>
+<div class="line-block">
+<div class="line">list(Users)</div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.api.admin.get_reservation">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.api.admin.</span></span><span class="sig-name descname"><span class="pre">get_reservation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seat_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.api.admin.get_reservation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the reservation for the seat at a particular date and time.</p>
+<div class="line-block">
+<div class="line">Parameters:</div>
+<div class="line-block">
+<div class="line">seat_id: int</div>
+<div class="line">date_id: int</div>
+<div class="line">time_id: int</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">Returns:</div>
+<div class="line-block">
+<div class="line">error or Reservation</div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.api.admin.get_users">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.api.admin.</span></span><span class="sig-name descname"><span class="pre">get_users</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">modifiers</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.api.admin.get_users" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the specified amount of users and returns them to the caller.</p>
+<div class="line-block">
+<div class="line">Parameters:</div>
+<div class="line-block">
+<div class="line">modifiers: JSON {per_page, page, adminonly, useronly}</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">Returns:</div>
+<div class="line-block">
+<div class="line">list(Users)</div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.api.admin.update_play">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.api.admin.</span></span><span class="sig-name descname"><span class="pre">update_play</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">play_json</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.api.admin.update_play" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the play identified by play_id with the play_json. The play info
+should be JSON data and can be generated with the serialize_play()
+function from routes/route_functions.</p>
+<p>This can return 3 different states.</p>
+<p>Play: The updated play information
+False: The play was unable to be updated (ie: Errors were encountered)
+None: The play requested does not exist.</p>
+<div class="line-block">
+<div class="line">Parameters:</div>
+<div class="line-block">
+<div class="line">play_id:   int</div>
+<div class="line">play_json: JSON {date, seats: {1: {seat JSON}, 2: …} }</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">Returns:</div>
+<div class="line-block">
+<div class="line">Play, False, None</div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="theatre.routes.api.admin.update_seat">
+<span class="sig-prename descclassname"><span class="pre">theatre.routes.api.admin.</span></span><span class="sig-name descname"><span class="pre">update_seat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seat_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seat_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#theatre.routes.api.admin.update_seat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates a single seat with the json passed in.</p>
+<p>Currently the row/column values are not updated since the seat will most
+likely not be moved around after the seat is created.</p>
+<p>Can return three types of values.</p>
+<p>Seat: The updated version of the seat.</p>
+<p>False: An error occurred in trying to update the seat.</p>
+<p>None: The seat does not exist.</p>
+<div class="line-block">
+<div class="line">parameters:</div>
+<div class="line-block">
+<div class="line">seat_id: int</div>
+<div class="line">seat_data: JSON {price}</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">Returns:</div>
+<div class="line-block">
+<div class="line">Seat, False, None</div>
+</div>
+</div>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Portales Theatre Website</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="specification.html">API Specification</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Admin API</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="admin_api_endpoints.html">Admin API HTTP Routes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="client_api.html">Client API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="client_api_endpoints.html">Client API HTTP Routes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shared.html">Shared API Functionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routes/admin.html">Administration Routes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routes/auth.html">Authorization Routes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../routes/route_functions.html">Route Helper Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../forms.html">Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models.html">Models</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="specification.html" title="previous chapter">API Specification</a></li>
+      <li>Next: <a href="admin_api_endpoints.html" title="next chapter">Admin API HTTP Routes</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Ephreal.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/admin_api.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
